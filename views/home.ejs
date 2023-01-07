@@ -12,21 +12,24 @@
     
     <div id="app_container" >
         <h1> <%= heading %> </h1>
-        <div id="form_container">
+        
+        <form id="form_container" action="/create_task" method="post">
             <div id="task_input_wrapper" class="input_hover">
                 DESCRIPTION
-                <input type="text" id="task_input" placeholder="What do you need to do ?">
+                <input type="text" id="task_input" placeholder="What do you need to do ?" required name="task">
             </div>
 
             <div class="option_container">
-                <select id="card_option" class="select_hover">
-                    <option>abhedh</option>
-                    <option>abhedh</option>
-                    <option>abhedh</option>
+                <select id="card_option" class="select_hover" required name="label">
+                    <option>PERSONAL</option>
+                    <option>WORK</option>
+                    <option>SCHOOL</option>
+                    <option>CLEANING</option>
+                    <option>OTHER</option>
                 </select>
             </div>
             <div class="date_container">
-                <input type="date" id="select_date">
+                <input type="date" id="select_date" required name="due_date">
             </div>
             <div id="btn_container">
                 <div class="add_btn_container">
@@ -37,42 +40,35 @@
                 </div>
 
                 <div class="delete_btn_container">
-                    <button type="submit" id="task_delete">
-                        <i class="fa-solid fa-trash-can fa-lg"></i>
-                        DELETE TASKS
-                    </button>
+                    <a href="/delete_task">
+                        <button type="" id="task_delete">
+                            <i class="fa-solid fa-trash-can fa-lg"></i>
+                            DELETE TASKS
+                        </button>
+                    </a>
                 </div>
             </div>
-
-        </div>
+        </form>
+        
         <div id="list_container">
             <ul>
-                <li>
-                    
-                    <input type="checkbox" id="task_checked" class="task_checkbox">
-                    
-                    <div class="task_container">
-                        <p class="list_task">add a task</p>
-                        <p class="task_due_date"><i class="fa-solid fa-calendar-days fa-lg"></i>
-                            <%= due_date %>
-                        </p>
-                    </div>
-                    <div class="task_label">
-                        HOME
-                    </div>
-                </li>
-                <li>
-                    <input type="checkbox" id="task_checked" class="task_checkbox">
-                    <div class="task_container">
-                        <p class="list_task">add a task</p>
-                        <p class="task_due_date"><i class="fa-solid fa-calendar-days fa-lg"></i>
-                            <%= due_date %>
-                        </p>
-                    </div>
-                    <div class="task_label">
-                        HOME
-                    </div>
-                </li>
+                <% for(i of task_list){ %>
+                    <li>
+                        
+                        <input type="checkbox" id="task_checked" class="task_checkbox">
+                        
+                        <div class="task_container">
+                            <p class="list_task"> <%= i.task %> </p>
+                            <p class="task_due_date"><i class="fa-solid fa-calendar-days fa-lg"></i>
+                                <%= i.due_date %>
+                            </p>
+                        </div>
+                        <div class="task_label">
+                            <%= i.label %>
+                        </div>
+                    </li>
+                <%}%>
+                
                 
             </ul>
         </div>
