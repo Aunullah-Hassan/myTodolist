@@ -1,5 +1,9 @@
 const express=require('express');
 const bodyParser=require('body-parser');
+
+const db=require('./config/mongoose');
+const TodoList=require('./models/todolist');
+
 const app=express();
 const port=8000;
 
@@ -8,22 +12,43 @@ app.set('views','views');
 app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({extended: false}));
 
-todate=Date('12/12/12');
+
 app.get('/',function(req,res){
     // console.log(__dirname);
     // console.log(req.url);
-    return res.render('home',{
-        title: "To Do List",
-        heading: "TODO App",
-        due_date:todate
+    TodoList.find({},function(err,tasks){
+        // name:'new'
+        if(err){
+            console.log('error in fetching To do List from db ');
+            return;
+        }
+        return res.render('home',{
+            title:'My ToDo List',
+            task_list:tasks,
+            heading:"TODO App"
+        });
     });
 
     
 });
 
 app.post('/create_task',function(req,res){
-    console.log('create task requested');
-    return res.redirect('back');
+    // console.log('create task requested');
+
+    TodoList.create({
+        task:req.body.task,
+        due_date:req.body.due_date,
+        label:req.body.label
+    },function(err,newContact){
+        if(err){
+            console.log('error in creating contact');
+            return;
+        }
+        console.log('************',newContact);
+        return res.redirect('back');
+    });
+
+    // return res.redirect('back');
 });
 
 app.get('/delete_task',function(req,res){
