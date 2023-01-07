@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+   
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    
+    <div id="app_container" >
+        <h1> <%= heading %> </h1>
+        <div id="form_container">
+            <div id="task_input_wrapper" class="input_hover">
+                DESCRIPTION
+                <input type="text" id="task_input" placeholder="What do you need to do ?">
+            </div>
+
+            <div class="option_container">
+                <select id="card_option" class="select_hover">
+                    <option>abhedh</option>
+                    <option>abhedh</option>
+                    <option>abhedh</option>
+                </select>
+            </div>
+            <div class="date_container">
+                <input type="date" id="select_date">
+            </div>
+            <div id="btn_container">
+                <div class="add_btn_container">
+                    <button type="submit" id="task_add">
+                        <i class="fa-sharp fa-solid fa-plus fa-lg"></i>
+                        ADD TASK
+                    </button>
+                </div>
+
+                <div class="delete_btn_container">
+                    <button type="submit" id="task_delete">
+                        <i class="fa-solid fa-trash-can fa-lg"></i>
+                        DELETE TASKS
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div id="list_container">
+            <ul>
+                <li>
+                    
+                    <input type="checkbox" id="task_checked" class="task_checkbox">
+                    
+                    <div class="task_container">
+                        <p class="list_task">add a task</p>
+                        <p class="task_due_date"><i class="fa-solid fa-calendar-days fa-lg"></i>
+                            <%= due_date %>
+                        </p>
+                    </div>
+                    <div class="task_label">
+                        HOME
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" id="task_checked" class="task_checkbox">
+                    <div class="task_container">
+                        <p class="list_task">add a task</p>
+                        <p class="task_due_date"><i class="fa-solid fa-calendar-days fa-lg"></i>
+                            <%= due_date %>
+                        </p>
+                    </div>
+                    <div class="task_label">
+                        HOME
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/js/home.js"></script>
+    <script src="https://kit.fontawesome.com/b0bad8bdd8.js" crossorigin="anonymous"></script>
+</body>
+</html>
