@@ -10,11 +10,12 @@ let task_id;
 
 list_to_delete.addEventListener('click',function(){
 
-     tasks=document.querySelector('.task_checkbox:checked');
+    tasks=document.querySelector('.task_checkbox:checked');
 
     task_id=tasks.getAttribute('data-id').trim();
+
     const url_req="/delete_task/"+task_id+"";
-    console.log(url_req);
+  
     list_to_delete.setAttribute("href",url_req);
 
 });
