@@ -38,24 +38,27 @@
                         ADD TASK
                     </button>
                 </div>
+            </div>
+        </form>
 
                 <div class="delete_btn_container">
-                    <a href="/delete_task">
+                    <!-- href="/delete_task/?ids=<%=locals.task_ids%>" -->
+                    <a href="" id="fetch_del_task">
                         <button type="" id="task_delete">
                             <i class="fa-solid fa-trash-can fa-lg"></i>
                             DELETE TASKS
                         </button>
                     </a>
                 </div>
-            </div>
-        </form>
+            <!-- </div>
+        </form> -->
         
         <div id="list_container">
             <ul>
                 <% for(i of task_list){ %>
                     <li>
                         
-                        <input type="checkbox" id="task_checked" class="task_checkbox">
+                        <input type="checkbox" id="task_checked" class="task_checkbox" data-id="<%=i._id%>" >
                         
                         <div class="task_container">
                             <p class="list_task"> <%= i.task %> </p>

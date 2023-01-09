@@ -11,6 +11,7 @@ app.set('view engine','ejs');
 app.set('views','views');
 app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({extended: false}));
+// {extended: false}
 
 
 app.get('/',function(req,res){
@@ -51,10 +52,35 @@ app.post('/create_task',function(req,res){
     // return res.redirect('back');
 });
 
-app.get('/delete_task',function(req,res){
-    console.log('delete contact requested');
-    return res.redirect('back');
+app.get('/delete_task/:id',function(req,res){
+    
+    
+    console.log(req.params);
+
+    const id=req.params.id;
+   
+    
+    
+    // find task in database using id and delete
+    if(id){
+
+            TodoList.findByIdAndDelete(id,function(err){
+                if(err){
+                    console.log('erreor in deleting an object from database: ',err);
+                    return;
+                }
+                return res.redirect('back');
+            });
+
+    }
+    else{
+        return res.redirect('back');
+    }
+
+
 });
+   
+
 
 
 
@@ -64,3 +90,6 @@ app.listen(port,function(err){
     }
     console.log(`server is runnig on the port : ${port}`);
 });
+
+
+

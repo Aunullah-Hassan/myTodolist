@@ -107,6 +107,12 @@
     justify-content: center;
     align-items: center;
 }
+.delete_btn_container a{
+    width: 98%;
+    height: 98%;
+    display: block;
+    text-align: center;
+}
 
 /* Hovering effects on input form and Submit Buttons */
 .input_hover :hover{
